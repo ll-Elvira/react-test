@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { decrement, increment } from './store/modules/test';
 // import styles from './Counter.module.css';
 import { incrementAge, decrementAge, change } from './store/modules/user';
+import * as XLSX from 'xlsx';
 
 function B (){
 
@@ -39,6 +40,7 @@ function App() {
     
 // }
 // fetchData();
+
 const [n,setN] = useState(0)
 const URL = 'http://geek.itheima.net/v1_0/channels'
 async function list(){
@@ -157,9 +159,20 @@ const generateCaptcha = ()=> {
     alert("您的浏览器不支持Canvas！");
   }
 }
+const data = [
+  {a:1,b:2},
+  {a:4,b:5}
+]
+const down = ()=>{
+  const ws = XLSX.utils.json_to_sheet(data, { sheetStubs: true });
+  const wb = XLSX.utils.book_new();//工作簿
+  XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+  XLSX.writeFile(wb, `导入模板.xlsx`);
+}
 
   return (
     <div>
+      <button onClick = {down}>导出</button>
       <div 
        
        style={{width:"100px",height:"100px",background: "green"}}
