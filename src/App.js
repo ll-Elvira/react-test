@@ -169,7 +169,15 @@ const down = ()=>{
   XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
   XLSX.writeFile(wb, `导入模板.xlsx`);
 }
-
+const r = {
+  d:"11",
+}
+console.log(r.toString())
+const params = {
+  name: 'Alice', age: 30, city: 'Wonderland'
+}
+const queryString = new URLSearchParams(params).toString();
+console.log(queryString)
   return (
     <div>
       <button onClick = {down}>导出</button>
